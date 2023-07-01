@@ -3,64 +3,68 @@
 import { TbPlaylist } from "react-icons/tb"
 import { AiOutlinePlus } from "react-icons/ai"
 
+import { Song } from "@/types"
+import useOnPlay from "@/hooks/useOnPlay"
 import useAuthModal from "@/hooks/useAuthModal"
 import { useUser } from "@/hooks/useUser"
 import useUploadModal from "@/hooks/useUploadModal"
-import { Song } from "@/types"
+
 import MediaItem from "./MediaItem"
 
 interface LibraryProps {
-    songs: Song[];
+	songs: Song[];
 }
 
-const Library: React.FC<LibraryProps> = ({songs}) => {
+const Library: React.FC<LibraryProps> = ({ songs }) => {
 
-    const authModal = useAuthModal();
-    const uploadModal = useUploadModal();
-    const { user } = useUser();
-    
-    const onClick = () => {
-        if (!user) {
-            return authModal.onOpen()
-        }
+	const authModal = useAuthModal();
+	const uploadModal = useUploadModal();
+	const { user } = useUser();
 
-        // check for subscriptions
+	const onPlay = useOnPlay(songs);
 
-        return uploadModal.onOpen();
-    }
+	const onClick = () => {
+		if (!user) {
+			return authModal.onOpen()
+		}
 
-    return (
-        <div className="flex flex-col">
+		// check for subscriptions
 
-            <div className="flex items-center justify-between px-5 pt-4">
+		return uploadModal.onOpen();
+	}
 
-                <div className="inline-flex items-center gap-x-2">
-                    <TbPlaylist className="text-neutral-400" size={26}/>
-                    <p className="text-neutral-400 font-medium text-md">Your Library</p>
-                </div>
-                
-                <AiOutlinePlus 
-                    className="text-neutral-400 cursor-pointer hover:text-white transition" 
-                    size={20} 
-                    onClick={onClick} 
-                />
+	return (
+		<div className="flex flex-col">
 
-            </div>
+			<div className="flex items-center justify-between px-5 pt-4">
 
-            <div className="text flex-col gap-y-2 mt-4 px-3">
+				<div className="inline-flex items-center gap-x-2">
+					<TbPlaylist className="text-neutral-400" size={26} />
+					<p className="text-neutral-400 font-medium text-md">Your Library</p>
+				</div>
 
-                {songs.map((item) => (
-                    <MediaItem 
-                        onClick={() => {}} 
-                        key={item.id} 
-                        data={item}
-                    />
-                ))}
+				<AiOutlinePlus
+					className="text-neutral-400 cursor-pointer hover:text-white transition"
+					size={20}
+					onClick={onClick}
+				/>
 
-            </div>
-            
-        </div>
-    )
+			</div>
+
+			<div className="text flex-col gap-y-2 mt-4 px-3">
+
+				{songs.map((item) => (
+					<MediaItem
+						onClick={(id: string) => onPlay(id)}
+						key={item.id}
+						data={item}
+					/>
+				))}
+
+			</div>
+
+		</div>
+	)
 }
 
 export default Library

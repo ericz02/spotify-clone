@@ -109,7 +109,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
       </div>
 
       <div className="flex md:hidden col-auto w-full justify-end items-center">
-        <div onClick={() => {}} className="h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer">
+        <div onClick={handlePlay} className="h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer">
           <Icon size={30} className="text-black"/>
         </div>
       </div>
@@ -122,7 +122,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
         />
 
         <div
-          onClick={() => {}}
+          onClick={handlePlay}
           className="flex items-center justify-center h-10 w-10 rounded-full bg-white p-1 cursor-pointer"
         >
           <Icon size={30} className="text-black"/>
