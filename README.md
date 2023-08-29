@@ -2,6 +2,8 @@
 
 ### LINK TO VERCEL DEPLOYMENT: (https://spotify-cl0ne.vercel.app/)
 
+![Website Showcase](https://cdn.discordapp.com/attachments/557693298890899495/1145936437640953886/Recording_2023-08-29_at_00.21.24.gif)
+
 ![Copy of Copy of Fullstack Twitter Clone](https://github.com/ericz02/spotify-clone/blob/main/assets/image.png)
 
 
