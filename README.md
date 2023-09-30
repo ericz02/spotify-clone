@@ -2,7 +2,7 @@
 
 ### LINK TO VERCEL DEPLOYMENT: (https://spotify-cl0ne.vercel.app/)
 
-![Showcsae of Fullstack Twitter Clone]
+## Showcase of Fullstack Twitter Clone
 <div>
     <a href="https://www.loom.com/share/0016ba85c6f34849b88743b138cde3d2">
     </a>
